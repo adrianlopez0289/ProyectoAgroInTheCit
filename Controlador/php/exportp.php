@@ -1,6 +1,7 @@
-<head>
-<link rel="stylesheet" type="styles.css" href="http://localhost/interfasweb/assets/css/styls2.css">
-</head>
+<?php
+header("Content-Type: application/xml");
+header("Content-Disposition: attachment; filename= reporte_productos.xls");
+?>
 
 <div class="contenedorp">
     <table class="tablap">
@@ -47,10 +48,3 @@ while($consulta = mysqli_fetch_array($resultados)){
 }
 mysqli_close($conn);
 ?>
-<button><a href="../../Controlador/php/exportp.php">Exportar Reporte</a></button>
-<?php
-?>
-
-
-
-        

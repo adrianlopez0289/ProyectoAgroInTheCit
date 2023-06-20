@@ -1,0 +1,49 @@
+body{
+    background: url("../img/backgraund.jpg") repeat;
+    background-position: center;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'open sans', sans-serif;
+}
+img{
+    width: 28%;
+}
+h1{
+    color: white;
+    font-size: 40px;
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+button {
+    background-color: transparent; 
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10PX;
+}
+a{
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    transform: scale(1.1);
+    color: orange;
+}
+button:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transform: scale(1.1);
+    
+}

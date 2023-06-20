@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://localhost/interfasweb/assets/css/styls2.css">
+    <link rel="stylesheet" href="http://localhost/interfasweb2/assets/css/styls2.css">
     <title>Document</title>
 </head>
 <body>
@@ -27,36 +27,62 @@
         
     </header>
     <section>
-
+    <div class="content">
+    <h1>AGRO IN THE CITY</h1>
+    
+            <p class="par">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, <br>
+                 repellendus eligendi. Perspiciatis veniam dolorem illo totam, tempora,<br>
+                  minima minus praesentium ratione molestias repudiandae debitis temporibus omnis vero eveniet suscipit quod. <br>
+                  <?php
+              include_once("../../Controlador/php/conex.php");
+             include_once("../../Controlador/php/ventas/deletev.php");
+             ?>    
+        <?php
+             if (isset($_POST["btn_consulv"])){
+            include_once ("../../Controlador/php/ventas/consulv.php");
+            }
+        ?>
+    </div>
         <div class="form-box">
             <div class="form-value">
                 <h1>Facturacion </h1>
-                <form method="post" action="logica/insertar.php">
+                <form action="ventas.php" method="POST">
                     <div class="inputbox">
-                        <input type="text" name="id" id="id" required>
+                        <input type="text" name="numerov" id="id">
                         <label for="">NUMERO DE VENTA</label>
                     </div>
                     <div class="inputbox">
-                        <input type="text" name="primernombre" id="primernombre" required>
+                        <input type="text" name="nomproductv" id="primernombre" >
                         <label for="">NOMBRE DEL PRODUCTO </label>
                     </div>
                     <div class="inputbox">
-                        <input type="text" name="primerapellido" id="primerapellido" required>
+                        <input type="text" name="cantidadpv" >
+                        <label for="">CANTIDAD DE PRODUCTO COMPRADO </label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" name="valorv" id="primerapellido" >
                         <label for="">VALOR DE LA VENTA  </label>
                     </div>
-
                     <div>
                     <button type="reset">BORRAR</button>
                     </div>
                     <br>
                     <div class="CRUD">
-                    <button type="submit" name="btn_insertar" id="btn_insertar">INSERTAR</button>
-                        <button>CONSULTAR</button>
-                        <button>ACTULIZAR</button>
-                        <button>ELIMINAR</button>
+                    <button type="submit" name="btn_insertarv" id="btn_insertar">INSERTAR</button>
+                        <button name="btn_consulv" id="btn_consultar">CONSULTAR</button>
+                        <button name="btn_actualiv">ACTULIZAR</button>
                     </div>
                     <br>  
                 </form>
+                <?php
+                if(isset($_POST["btn_insertarv"])){
+                    include_once("../../Controlador/php/ventas/insertarv.php");
+                }
+                if (isset($_POST["btn_actualiv"])){
+                    include_once ("../../Controlador/php/ventas/actualiv.php");
+                  
+                }
+                ?>
             </div>
         </div>
     </section>

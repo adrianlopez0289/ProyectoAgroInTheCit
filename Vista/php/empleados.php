@@ -27,58 +27,36 @@
         
     </header>
     <section>
-
+    <div class="content">
+    <h1>AGRO IN THE CITY</h1>
+    
+            <p class="par">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, <br>
+                 repellendus eligendi. Perspiciatis veniam dolorem illo totam, tempora,<br>
+                  minima minus praesentium ratione molestias repudiandae debitis temporibus omnis vero eveniet suscipit quod. <br>
+              <?php
+              include_once("../../Controlador/php/conex.php");
+             include_once("");
+             ?>    
+        <?php
+        if (isset($_POST["btn_consule"])){
+            include_once ("../../Controlador/empleado/consule.php");
+            }
+        ?>
+    </div>
         <div class="form-boxemp">
             <div class="form-value">
-                <form method="post" action="logica/insertar.php">
+                <form action="empleados.php" method="POST">
                     <div class="inputbox">
-                        <input type="text" name="id" id="id" required>
+                        <input type="text" name="idemp" id="id" required>
                         <label for="">IDENTIFICACION</label>
                     </div>
                     <div class="inputbox">
-                        <input type="text" name="primernombre" id="primernombre" required>
+                        <input type="text" name="pnombreemp" id="primernombre" required>
                         <label for="">PRIMER NOMBRE</label>
                     </div>
                     <div class="inputbox">
-                        <input type="text" name="primerapellido" id="primerapellido" required>
+                        <input type="text" name="snombreemp" id="primerapellido" required>
                         <label for="">PRIMER APELLIDO</label>
-                    </div>
-                    <div class="inputbox">
-                        <input type="text" name="segundoapellido" id="segundoapellido" required>
-                        <label for="">SEGUNDO APELLIDO</label>
-                    </div>
-                     <h3 id="sexo">Sexo</h3>
-                     <div class="forradio">
-                        <input type="radio" id="femenino" name="drone" value="sexo" required>
-                        <label for="femenino">FEMENINO</label>
-                    </div>
-                    <div class="forradio">
-                        <input type="radio" id="masculino" name="drone" value="sexo">
-                        <label for="masculino">MASCULINO</label>
-                    </div>
-                    <h3 id="estudio">Estudios</h3>
-                    <div class="forchecbox">
-                        <input type="checkbox" id="notiene" name="drone" value="estudio">
-                        <label for="notiene">NO TIENE</label>
-                    </div>
-                    <div class="forchecbox">
-                        <input type="checkbox" id="tecnico" name="drone" value="estudio">
-                        <label for="tecnico">TECNICO</label>
-                    </div>
-                    <div class="forchecbox">
-                        <input type="checkbox" id="universitario" name="drone" value="estudio">
-                        <label for="universitario">UNIVERSITARIO</label>
-                    </div>
-                    <br>
-                     <h3 id="archivos">Archivos</h3>
-                     <label class="currifo" for="curri">CURRICULUM</label> <br>
-                     <div class="forfile">
-                        <input type="file" id="curri" name="drone" value="curri" required>
-                    </div>
-                    <br>
-                    <label class="currifo" for="foto">FOTO</label> 
-                    <div class="forfile">    
-                        <input type="file" id="foto" name="foto" value="foto">
                     </div>
                     <div>
                     <button type="reset">BORRAR</button>
@@ -86,12 +64,20 @@
                     <br>
                     <div class="CRUD">
                        <button type="submit" name="btn_insertar" id="btn_insertar">INSERTAR</button>
-                        <button>CONSULTAR</button>
-                        <button>ACTULIZAR</button>
+                        <button name="btn_consule">CONSULTAR</button>
+                        <button name="ACTUAL">ACTULIZAR</button>
                         <button>ELIMINAR</button>
                     </div>
                     <br>  
                 </form>
+                <?php
+                    if (isset($_POST["btn_insertar"])){
+                        include_once ("../../Controlador/php/insertp.php");
+                    }
+                    if (isset($_POST["ACTUAL"])){
+                        include_once ("../../Controlador/empleado/actualie.php");
+                    }
+                     ?>
             </div>
         </div>
     </section>

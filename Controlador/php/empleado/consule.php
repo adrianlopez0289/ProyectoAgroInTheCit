@@ -17,7 +17,7 @@
     </table>
 </div>
 <?php
-include_once ("conex.php");
+include_once ("conexe.php");
 
 
 
@@ -47,10 +47,3 @@ while($consulta = mysqli_fetch_array($resultados)){
 }
 mysqli_close($conn);
 ?>
-<button><a href="../../Controlador/php/exportp.php">Exportar Reporte</a></button>
-<?php
-?>
-
-
-
-        

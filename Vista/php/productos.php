@@ -84,8 +84,6 @@
                         include_once ("../../Controlador/php/actualip.php");
                       
                     }
-                    
-
                      ?>
             </div>
         </div>
