@@ -4,21 +4,20 @@
  session_start();
 
  $documentou = $_POST["idu"];
- //$nombreu = $_POST["nombreu"];
- $correou = $_POST["correou"];
+ $cargou = $_POST["cargo"];
+ $numcargo = $_POST["idcargo"];
  $contrau = $_POST["contrau"];
+ $tablaBD = "empleado";
 
- $tablaBD = "usuario";
-
- $sql = "SELECT COUNT(*) AS contar FROM $tablaBD WHERE id='$documentou' AND correo='$correou' AND contra='$contrau'";
+ $sql = "SELECT COUNT(*) AS contar FROM $tablaBD WHERE ID_Emp='$documentou' AND Cargo_Emp='$cargou' AND Contra_Emp='$contrau' AND  Id_Usuario='$numcargo'";
  $consulta = mysqli_query($conn,$sql);
  $array = mysqli_fetch_array($consulta);
 
  if($array["contar"]>0){
- // $_SESSION["nomre"] = $nombreu;
-    header("location: ../../Vista/php/productos.php");
+    $_SESSION["cargo"] = $cargou;
+    header("location: ../../Vista/php/inicio.php");
  }else{
-    echo "<script languaje='JavaScript'>alert('DATOS INCORRECTOS'); location.assign('../../Vista/html/plantillalogin.html')</script>";
+    echo "<script languaje='JavaScript'>alert('DATOS INCORRECTOS'); location.assign('../../Vista/php/plantillalogin.html')</script>";
     echo"<br>";
  }
 

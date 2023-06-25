@@ -1,5 +1,5 @@
 <head>
-<link rel="stylesheet" type="styles.css" href="http://localhost/interfasweb/assets/css/styls2.css">
+<link rel="stylesheet" type="styles.css" href="http://localhost/interfasweb3/assets/css/styls2.css">
 </head>
 
 <div class="contenedorp">

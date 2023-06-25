@@ -1,5 +1,7 @@
 body{
     background: url("../img/backgraund.jpg") repeat;
+    background-color: rgb(40, 40, 40);
+    background-blend-mode: soft-light;
     background-position: center;
     background-size: cover;
     margin: 0;

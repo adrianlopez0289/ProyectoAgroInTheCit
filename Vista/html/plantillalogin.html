@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"  href="http://localhost/interfasweb/assets/css/styls2.css">
+    <link rel="stylesheet"  href="http://localhost/interfasweb3/assets/css/styls2.css">
     <title>Document</title>
 </head>
 <body>
 
     <header class="header">
         <div class="logo">
-          <img src="http://localhost/interfasweb/assets/img/loogoagro.png" alt="logo de la compañia " 
+          <img src="http://localhost/interfasweb3/assets/img/loogoagro.png" alt="logo de la compañia " 
           class="logo_img">   
         </div>
-        <h1> INICIAR SECION</h1>
+        <h1> INICIAR SESION</h1>
         <nav >
             <ul class="nav-links">
                 <li><a href="inicio.html">Inicio</a></li>
-                <li><a href="productos.html">Productos</a></li>
+                <li><a href="Inventario.html">Inventario</a></li>
                 <li><a href="ventas.html">Ventas</a></li>
-                <li><a href="Empleados.html">Empleados</a></li>
+                <li><a href="Empleados.html">Recursos Humanos</a></li>
             </ul>
         </nav>
         <a href="#" class="btn"><button>LOGIN</button></a>
@@ -29,61 +29,27 @@
     <section>
         <div class="content">
             <h1>AGRO IN THE CITY</h1>
-            <p class="par">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, <br>
-                 repellendus eligendi. Perspiciatis veniam dolorem illo totam, tempora,<br>
-                  minima minus praesentium ratione molestias repudiandae debitis temporibus omnis vero eveniet suscipit quod. <br>
-            <div class="registro">
-                <div class="form-value">
-                    <form  action="../../Controlador/php/insert.php" method="POST">
-                        <h1>REGISTRARSE</h1>
-                    <div class="inputbox">
-                        <input type="text" name="idu" id="id" required>
-                        <label for=""><b>IDENTIFICACION</b></label>
-                    </div>
-                    <div class="inputbox">
-                        <input type="text" name="nombreu" id="nom" required>
-                        <label for=""> <b>NOMBRE</b> </label>
-                    </div>
-                    <div class="inputbox">
-                        <input type="text" name="apellidou" id="lastname" required>
-                        <label for=""> <b>APELLIDO</b> </label>
-                    </div>
-                    <div class="inputbox">
-                        <input type="email" name="correou" id="correo" required>
-                        <label for=""> <b>CORREO ELECTRONICO</b> </label>
-                    </div>
-                    <div class="inputbox">
-                        <input type="password" name="contrau" id="contra" required>
-                        <label for=""> <b>CONTRASEÑA</b> </label>
-                    </div>
-                    <br>
-                    <div>
-                        <button type="reset">BORRAR</button>
-                    </div>
-                    <br>
-                    <div class="CRUD">
-                       <button type="submit" name="btn_insertar" id="btn_insertar">REGISTRAR</button>
-                    </div>
-                    <br>  
-                    
-                     <br>  
-                    </form>
-                </div>
-            </div>
-
+            <p class="par">En este apartado usted podrá iniciar sesión con su número de identificación el tipo de usuario el id de
+                 usuario que le suministro el administrador, la contraseña que usted  entrego al administrador. <br>
+                 <br>
+                  Tenga en cuenta que cualquiera de estas cuentas no tiene restricción alguna y se mantiene 
+                  verificando constantemente, por lo tanto cualquier movimiento será revisado a detalle. <br>
         </div>
-
         <div class="form-box">
             <div class="form-value">
                 <form action="../../Controlador/php/loguear.php" method="POST">
-                    <h1>INICIAR SECION</h1>
+                    <h1>INICIAR SESION</h1>
                     <div class="inputbox">
                         <input type="text" name="idu" id="id" required>
                         <label for=""> <b>IDENTIFICACION</b> </label>
                     </div>
                     <div class="inputbox">
-                        <input type="email" name="correou" id="primernombre" required>
-                        <label for=""> <b>CORREO ELECTRONICO</b> </label>
+                        <input type="text" name="cargo" id="primernombre" required>
+                        <label for=""> <b>CARGO</b> </label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" name="idcargo" id="primerapellido" required>
+                        <label for=""> <b>ID DEL CARGO</b> </label>
                     </div>
                     <div class="inputbox">
                         <input type="password" name="contrau" id="primerapellido" required>
@@ -95,7 +61,7 @@
                     </div>
                     <br>
                     <div class="CRUD">
-                       <button type="submit" name="btn_insertar" id="btn_insertar">Iniciar secion</button>
+                       <button type="submit" name="btn_insertar" id="btn_insertar">INICIAR SESION</button>
                     </div>
                     <br>  
                 </form>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 13, 2023 at 07:15 PM
+-- Generation Time: Jun 25, 2023 at 04:16 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -139,8 +139,20 @@ CREATE TABLE `direcionprovedor` (
 CREATE TABLE `empleado` (
   `ID_Emp` int NOT NULL,
   `Nombre_Emp` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `Apellido_Emp` varchar(20) COLLATE utf8mb4_general_ci NOT NULL
+  `Apellido_Emp` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `Correo_Emp` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `Contra_Emp` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `Cargo_Emp` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `Id_Usuario` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `empleado`
+--
+
+INSERT INTO `empleado` (`ID_Emp`, `Nombre_Emp`, `Apellido_Emp`, `Correo_Emp`, `Contra_Emp`, `Cargo_Emp`, `Id_Usuario`) VALUES
+(326322, 'juan', 'restrepo', 'jua@gmai.com', '673922', 'empleado', 2211),
+(546556, 'rodrigo', 'puentes', 'rpuet@gmail.com', '2728793', 'administrador', 1122);
 
 -- --------------------------------------------------------
 
@@ -196,9 +208,7 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`N_Produ`, `Nombre_Produ`, `PrecioUni_produ`, `cantpro`) VALUES
-(3242, 'yuca', 2000, 60),
-(3422, 'frijolxlibra', 8000, 90),
-(137372, 'quesoxlibra', 3000, 89),
+(36232, 'cebollaxkilo', 1800, 50),
 (234543, 'zanahorias', 900, 80);
 
 -- --------------------------------------------------------
@@ -220,24 +230,17 @@ CREATE TABLE `provedor` (
 --
 
 CREATE TABLE `usuario` (
-  `id` int NOT NULL,
-  `nombre` varchar(20) NOT NULL,
-  `apellido` varchar(20) NOT NULL,
-  `correo` varchar(20) NOT NULL,
-  `contra` varchar(20) NOT NULL
+  `usuario_id` int NOT NULL,
+  `tipos_usuario` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `correo`, `contra`) VALUES
-(173721, 'ramon', 'diaz', 'rdiaz@gmail.com', '00000'),
-(231231, 'juan', 'ramirez', 'junram@gmail.com', '12342'),
-(305215, 'adrian', 'lopez', 'adrian@gmail.com', '123451'),
-(1060040, 'Andrey', 'Quiceno', 'andreyqui@gmail.com', '012345'),
-(3231231, 'pablo', 'escobar', 'pabloes@gmail.com', '123245232'),
-(12332781, 'Juan', 'Ramirez', 'juancarlos@gmail.com', '1234567');
+INSERT INTO `usuario` (`usuario_id`, `tipos_usuario`) VALUES
+(1122, 'administrador '),
+(2211, 'empleado');
 
 -- --------------------------------------------------------
 
@@ -246,9 +249,21 @@ INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `correo`, `contra`) VALUES
 --
 
 CREATE TABLE `venta` (
-  `N_Venta` int NOT NULL,
-  `Valor_Venta` int NOT NULL
+  `NVenta` int NOT NULL,
+  `NomProducto` varchar(80) COLLATE utf8mb4_general_ci NOT NULL,
+  `CanProduct` int NOT NULL,
+  `ValorVenta` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `venta`
+--
+
+INSERT INTO `venta` (`NVenta`, `NomProducto`, `CanProduct`, `ValorVenta`) VALUES
+(1313, 'chocolate', 10, 3242),
+(14313, 'yuca', 40, 20000),
+(23212, 'arroz', 323, 40000),
+(121321, 'MANZANA', 10, 20000);
 
 --
 -- Indexes for dumped tables
@@ -318,7 +333,8 @@ ALTER TABLE `direcionprovedor`
 -- Indexes for table `empleado`
 --
 ALTER TABLE `empleado`
-  ADD PRIMARY KEY (`ID_Emp`);
+  ADD PRIMARY KEY (`ID_Emp`),
+  ADD KEY `Id_Usuario` (`Id_Usuario`);
 
 --
 -- Indexes for table `factura`
@@ -357,13 +373,13 @@ ALTER TABLE `provedor`
 -- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`usuario_id`);
 
 --
 -- Indexes for table `venta`
 --
 ALTER TABLE `venta`
-  ADD PRIMARY KEY (`N_Venta`);
+  ADD PRIMARY KEY (`NVenta`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -373,7 +389,7 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12332782;
+  MODIFY `usuario_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12332782;
 
 --
 -- Constraints for dumped tables
@@ -384,7 +400,7 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `adquicicion`
   ADD CONSTRAINT `adquicicion_ibfk_1` FOREIGN KEY (`ID_Clien_Adq`) REFERENCES `cliente` (`ID_Clien`),
-  ADD CONSTRAINT `adquicicion_ibfk_2` FOREIGN KEY (`N_Venta_Adq`) REFERENCES `venta` (`N_Venta`);
+  ADD CONSTRAINT `adquicicion_ibfk_2` FOREIGN KEY (`N_Venta_Adq`) REFERENCES `venta` (`NVenta`);
 
 --
 -- Constraints for table `categoria`
@@ -436,10 +452,16 @@ ALTER TABLE `direcionprovedor`
   ADD CONSTRAINT `direcionprovedor_ibfk_1` FOREIGN KEY (`Id_prov_direc`) REFERENCES `provedor` (`Id_prov`);
 
 --
+-- Constraints for table `empleado`
+--
+ALTER TABLE `empleado`
+  ADD CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`Id_Usuario`) REFERENCES `usuario` (`usuario_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `factura`
 --
 ALTER TABLE `factura`
-  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`N_Venta_Fac`) REFERENCES `venta` (`N_Venta`);
+  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`N_Venta_Fac`) REFERENCES `venta` (`NVenta`);
 
 --
 -- Constraints for table `gestioproducto`
